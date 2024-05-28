@@ -8,6 +8,7 @@ const csvString = "ID,Name,Occupation,Age\r\n42,Bruce,Knight,41\r\n57,Bob,Fry Co
 
 //console.log(data);
 
+
 // Part 2: Expanding Functionality
 // Split the CSV string into rows based on the newline sequence
 let rows = csvString.split('\r\n');
@@ -18,7 +19,17 @@ let header = rows[0].split(',');
 // Parse each row into an array of cells
 let data = rows.map(row => row.split(','));
 
-console.log(data);
+console.log('Parsed Data:', data);
 
+// Part 3: Transforming Data
+// Transform each row (excluding the header) into an object
+let objects = data.slice(1).map(row => {
+    let obj = {};
+    row.forEach((cell, index) => {
+        // Use the header to create keys and assign corresponding cell values
+        obj[header[index].toLowerCase()] = cell;
+    });
+    return obj;
+});
 
-
+console.log('Array of Objects:', objects);
