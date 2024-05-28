@@ -56,3 +56,28 @@ objects.forEach(obj => {
 // Calculate the average by dividing the total age by the number of objects using the array’s length property
 let averageAge = totalAge / objects.length;
 console.log('Average Age:', averageAge);
+
+// Part 5: Transforming Back to CSV
+// Function to convert an array of objects back into CSV format
+function objectsToCSV(objects) {
+    if (objects.length === 0) return '';
+    
+    // Extract headers from the first object
+    let headers = Object.keys(objects[0]);
+    
+    // Start the CSV string with the header row
+    let csv = headers.join(',') + '\r\n';
+    
+    // Append each object's values as a new row in the CSV
+    objects.forEach(obj => {
+        let row = headers.map(header => obj[header]).join(',');
+        csv += row + '\r\n';
+    });
+    
+    return csv;
+}
+
+// Convert the objects array back into a CSV string
+let finalCSV = objectsToCSV(objects);
+console.log('CSV:', finalCSV);
+
