@@ -45,16 +45,14 @@ objects.push({ id: "7", name: "Bilbo", occupation: "None", age: "111" });
 
 console.log('Modified Objects:', objects);
 
-// Calculate the average age of the group
+// Calculate average age of the group using array’s length property
 let totalAge = 0;
-let count = 0;
 
 // Iterate through each object to sum up the ages
 objects.forEach(obj => {
     totalAge += parseInt(obj.age, 10); // Convert age from string to integer
-    count++;
 });
 
-// Calculate the average by dividing the total age by the number of objects
-let averageAge = totalAge / count;
+// Calculate the average by dividing the total age by the number of objects using the array’s length property
+let averageAge = totalAge / objects.length;
 console.log('Average Age:', averageAge);
