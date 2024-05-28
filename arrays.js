@@ -8,7 +8,6 @@ const csvString = "ID,Name,Occupation,Age\r\n42,Bruce,Knight,41\r\n57,Bob,Fry Co
 
 //console.log(data);
 
-
 // Part 2: Expanding Functionality
 // Split the CSV string into rows based on the newline sequence
 let rows = csvString.split('\r\n');
@@ -19,7 +18,7 @@ let header = rows[0].split(',');
 // Parse each row into an array of cells
 let data = rows.map(row => row.split(','));
 
-console.log('Parsed Data:', data);
+console.log(data);
 
 // Part 3: Transforming Data
 // Transform each row (excluding the header) into an object
@@ -32,4 +31,30 @@ let objects = data.slice(1).map(row => {
     return obj;
 });
 
-console.log('Array of Objects:', objects);
+console.log(objects);
+
+// Part 4: Sorting and Manipulating Data
+// Remove the last element from the array
+objects.pop();
+
+// Insert a new object at index 1
+objects.splice(1, 0, { id: "48", name: "Barry", occupation: "Runner", age: "25" });
+
+// Add a new object to the end of the array
+objects.push({ id: "7", name: "Bilbo", occupation: "None", age: "111" });
+
+console.log('Modified Objects:', objects);
+
+// Calculate the average age of the group
+let totalAge = 0;
+let count = 0;
+
+// Iterate through each object to sum up the ages
+objects.forEach(obj => {
+    totalAge += parseInt(obj.age, 10); // Convert age from string to integer
+    count++;
+});
+
+// Calculate the average by dividing the total age by the number of objects
+let averageAge = totalAge / count;
+console.log('Average Age:', averageAge);
